@@ -14,6 +14,8 @@ export default new Vuetify({
       checkboxOff:'check_box_outline_blank',
       checkboxOn:'check_box',
       dropdown:'arrow_drop_down',
+      search:'search',
+      menu:'menu'
     }
   },
   theme: {
