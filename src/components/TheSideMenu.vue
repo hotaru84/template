@@ -91,9 +91,6 @@ export default {
         item.click()
       }
     },
-  },
-  mounted:function(){
-    window.console.log(this.$i18n.t('app.home'))
   }
 }
 </script>
