@@ -1,0 +1,11 @@
+{
+  "app":{
+    "home":"Home",
+    "datatable":"Data Table",
+    "gallery": "Gallery",
+    "devices":"Devices",
+    "setup":"Setup",
+    "settings":"Settings",
+    "about":"About"
+  }
+}

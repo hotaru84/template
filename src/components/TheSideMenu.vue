@@ -49,7 +49,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title class="grey--text">
-                {{ item.text }}
+                {{ $t(item.text) }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -59,39 +59,43 @@
   </div>
 </template>
 <script>
-  export default {
-    props: {
-      name: {
-        type:String
-      },
-      subname: {
-        type:String
-      },
-      color: {
-        type:String,
-        required:true
+
+export default {
+  props: {
+    name: {
+      type:String
+    },
+    subname: {
+      type:String
+    },
+    color: {
+      type:String,
+      required:true
+    }
+  },
+  data: () => ({
+    items: [
+      { icon: 'lightbulb_outline', text:'app.home', to:'/' },
+      { icon: 'list ', text:'app.datatable', to:'/dataTable'},
+      { icon: 'image', text:'app.gallery', to:'/gallery'},
+      { icon: 'phone_android', text:'app.devices', to:'/devices'},
+      { divider: true },
+      { icon: 'phonelink', text: 'app.setup', to:'/setup' },
+      { icon: 'settings', text: 'app.settings', to:'settings' },
+      { icon: 'perm_device_information', text: 'app.about', to:'/about' },
+    ],
+  }),
+  methods:{
+    itemClick: function(item){
+      if(item.click != null){
+        item.click()
       }
     },
-    data: () => ({
-      items: [
-        { icon: 'lightbulb_outline', text: 'Home', to:'/' },
-        { icon: 'list ', text:'Data table', to:'/dataTable'},
-        { icon: 'image', text:'Gallery', to:'/gallery'},
-        { icon: 'phone_android', text:'Devices', to:'/devices'},
-        { divider: true },
-        { icon: 'phonelink', text: 'Setup', to:'/setup' },
-        { icon: 'settings', text: 'Settings', to:'settings' },
-        { icon: 'perm_device_information', text: 'About', to:'/about' },
-      ],
-    }),
-    methods:{
-      itemClick: function(item){
-        if(item.click != null){
-          item.click()
-        }
-      },
-    }
+  },
+  mounted:function(){
+    window.console.log(this.$i18n.t('app.home'))
   }
+}
 </script>
 <style scoped>
 #keep .v-navigation-drawer__border {

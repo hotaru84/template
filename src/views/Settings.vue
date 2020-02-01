@@ -1,5 +1,6 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+<v-card outlined class="ma-2">
+  <v-container fill-height class="overflow-y-auto">
+  </v-container>
+</v-card>
 </template>

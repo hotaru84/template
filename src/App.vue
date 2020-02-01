@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <the-header color="grey"/>
+    <the-side-menu color="grey"/>
     <v-content >
       <transition
         name="fade"
@@ -13,12 +13,12 @@
 </template>
 
 <script>
-import TheHeader from './components/TheHeader';
+import TheSideMenu from './components/TheSideMenu'
 
 export default {
   name: 'App',
   components: {
-    TheHeader
+    TheSideMenu
   },
 
   data: () => ({
