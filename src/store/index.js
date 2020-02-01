@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import data from './modules/data'
+import device from './modules/device'
 
 Vue.use(Vuex)
+const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
-  state: {
+  modules:{
+    data,
+    device
   },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
+  strict:debug
 })

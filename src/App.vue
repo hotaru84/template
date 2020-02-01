@@ -20,10 +20,12 @@ export default {
   components: {
     TheSideMenu
   },
-
   data: () => ({
-    //
   }),
+  created: function() {
+    this.$store.dispatch("device/FETCH_DEVICE")
+    this.$store.dispatch("data/FETCH_DATA")
+  }
 };
 </script>
 <style scoped>
