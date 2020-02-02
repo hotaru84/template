@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import data from './modules/data'
+import log from './modules/log'
 import device from './modules/device'
 
 Vue.use(Vuex)
@@ -8,7 +8,7 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   modules:{
-    data,
+    log,
     device
   },
   strict:debug

@@ -76,7 +76,7 @@ export default {
   data: () => ({
     items: [
       { icon: 'lightbulb_outline', text:'app.home', to:'/' },
-      { icon: 'list ', text:'app.datatable', to:'/dataTable'},
+      { icon: 'list ', text:'app.datatable', to:'/logs'},
       { icon: 'image', text:'app.gallery', to:'/gallery'},
       { icon: 'phone_android', text:'app.devices', to:'/devices'},
       { divider: true },

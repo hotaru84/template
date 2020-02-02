@@ -7,5 +7,20 @@
     "setup":"Setup",
     "settings":"Settings",
     "about":"About"
+  },
+  "logs":{
+    "time":"Time",
+    "data":"Data"
+  },
+  "devices": {
+    "serial":"Serial",
+    "ip":"IP Address",
+    "battery":"Remained Battery",
+    "screen":"Screen"
+  },
+  "action":{
+    "title":"Actions",
+    "add":"Add",
+    "delete":"delete"
   }
 }

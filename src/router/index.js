@@ -11,9 +11,9 @@ const routes = [
     component: Home
   },
   {
-    path:'/dataTable',
-    name:'datatable',
-    component: () => import('../views/DataTable.vue')
+    path:'/logs',
+    name:'logs',
+    component: () => import('../views/Logs.vue')
   },
   {
     path:'/gallery',

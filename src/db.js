@@ -3,21 +3,12 @@ import Dexie from "dexie";
 export const db = new Dexie("template");
 
 db.version(1).stores({
-  data: "time,data",
+  log: "time,data",
   device: "serial,ip,screen,battery"
 });
 
 db.on("populate", function() {
-  db.data.bulkAdd([
-    {
-      time:'2020-01-01 00:00:00',
-      data:'1234567890'
-    },
-    {
-      time:'2020-01-01 00:00:05',
-      data:'abcdefg'
-    }
-  ]);
+  db.log.bulkAdd([]);
   db.device.bulkAdd([
     {
       serial:'11111',

@@ -7,5 +7,20 @@
     "setup":"セットアップ",
     "settings":"設定",
     "about":"情報"
+  },
+  "logs":{
+    "time":"時刻",
+    "data":"データ"
+  },
+  "devices": {
+    "serial":"シリアル",
+    "ip":"IPアドレス",
+    "battery":"バッテリー残量",
+    "screen":"画面"
+  },
+  "action":{
+    "title":"操作",
+    "add":"追加",
+    "delete":"削除"
   }
 }
