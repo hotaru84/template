@@ -12,8 +12,10 @@ const mutations = {
   ADD_LOG(state,log) {
     state.log.unshift(log)
   },
-  DELETE_LOG(state,time) {
-    state.log = state.log.filter(l=>l.time != time)
+  DELETE_LOG(state,log) {
+    state.log = state.log.filter(l=>{
+      return !(l.time == log.time && l.serial == log.serial) 
+    })
   }
 }
 const actions = {
@@ -24,18 +26,19 @@ const actions = {
   },
   async ADD_LOG({commit},log) {
     try{
-      await db.log.add(log)
-      commit('ADD_LOG',log)
+      let count = await db.log.where({time:log.time,serial:log.serial}).count()
+      if(count == 0){
+        await db.log.add(log)
+        commit('ADD_LOG',log)
+      }
     }catch(err){
       window.console.log(err)
     }
   },
-  async DELETE_LOG({commit},time) {
+  async DELETE_LOG({commit},log) {
     try{
-      await db.log.where('time')
-        .equals(time)
-        .delete()
-      commit('DELETE_LOG',time)
+      await db.log.where({time:log.time,serial:log.serial}).delete()
+      commit('DELETE_LOG',log)
     }catch(err){
       window.console.log(err)
     }

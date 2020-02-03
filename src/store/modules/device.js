@@ -4,7 +4,8 @@ const state = {
   device: []
 }
 const getters = {
-  devices: state => state.device
+  devices: state => state.device,
+  serials: state => state.device.map(d=>d.serial)
 }
 const mutations = {
   FETCH_DEVICE(state, device) {
@@ -25,7 +26,7 @@ const actions = {
   },
   async ADD_DEVICE({commit},device) {
     try{
-      let exists = await db.device.where('serial').equals(device.serial).count()
+      let exists = await db.device.where({serial:device.serial}).count()
       if(exists == 0){
         await db.device.add(device)
         commit('ADD_DEVICE',device)
