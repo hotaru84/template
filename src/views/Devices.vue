@@ -1,7 +1,12 @@
 <template>
 <v-card outlined class="ma-2">
   <v-card-actions>
-    <v-btn text @click="ADD_DEVICE(sample)">{{$t('action.add')}}</v-btn>
+    <v-btn text @click="ADD_DEVICE({
+        serial:(Math.random() * 10000).toFixed(),
+        ip:'192.168.1.9',
+        screen:true,
+        battery:Math.random().toFixed(2)
+      })">{{$t('action.add')}}</v-btn>
   </v-card-actions>
   <v-data-table 
     :headers="headers"
@@ -19,12 +24,7 @@ import {mapGetters, mapActions} from 'vuex'
 export default {
   data() {
     return {
-      sample:{
-        serial:'99999',
-        ip:'192.168.1.9',
-        screen:true,
-        battery:0.8
-      }
+      
     }
   },
   methods:{

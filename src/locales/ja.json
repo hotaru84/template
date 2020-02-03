@@ -8,6 +8,16 @@
     "settings":"設定",
     "about":"情報"
   },
+  "home":{
+    "summary":{
+      "title":"稼働端末",
+      "subtitle":"稼働中のデバイス数"
+    },
+    "battery":{
+      "title":"バッテリー不足",
+      "subtitle":"残量が15%以下の端末"
+    }
+  },
   "logs":{
     "time":"時刻",
     "data":"データ"

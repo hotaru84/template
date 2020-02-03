@@ -8,6 +8,16 @@
     "settings":"Settings",
     "about":"About"
   },
+  "home":{
+    "summary":{
+      "title":"Avaiable",
+      "subtitle":"Number of devices"
+    },
+    "battery":{
+      "title":"Low battery",
+      "subtitle":"Remained battery less than 15%"
+    }
+  },
   "logs":{
     "time":"Time",
     "data":"Data"
