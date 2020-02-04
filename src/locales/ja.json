@@ -6,7 +6,10 @@
     "devices":"デバイス一覧",
     "setup":"セットアップ",
     "settings":"設定",
-    "about":"情報"
+    "about":"情報",
+    "filter":"フィルター",
+    "ok":"決定",
+    "cancel":"キャンセル"
   },
   "home":{
     "summary":{
@@ -32,5 +35,10 @@
     "title":"操作",
     "add":"追加",
     "delete":"削除"
+  },
+  "filter": {
+    "search":"探索",
+    "device":"デバイス",
+    "date":"年月日"
   }
 }

@@ -1,13 +1,7 @@
 <template>
 <v-card outlined class="ma-2">
-  <v-card-actions>
-    <v-select
-      v-model="serial"
-      :items="serials"
-      outlined>
-    </v-select>
-    <v-btn text @click="ADD_LOG({serial:serial,time:new Date().getTime(),data:'TEST'})">{{$t('action.add')}}</v-btn>
-  </v-card-actions>
+  <filter-menu/>
+  <v-btn text @click="addLog">{{$t('action.add')}}</v-btn>
   <v-data-table 
     :headers="headers"
     :items="logs">
@@ -24,20 +18,22 @@
 </template>
 <script>
 import {mapGetters, mapActions} from 'vuex'
+import FilterMenu from '../components/FilterMenu'
+
 export default {
-  data() {
-    return {
-      serial:null
-    }
-  },
+  components: {FilterMenu},
   methods:{
     ...mapActions('log',['ADD_LOG','DELETE_LOG']),
     getDate:function(ts){
       return new Date(ts).toISOString()
+    },
+    addLog:function(){
+      this.ADD_LOG({serial:this.serial,time:new Date().getTime(),data:'TEST'})
     }
   },
   computed: {
     ...mapGetters('log',['logs']),
+    ...mapGetters('filter',['serial','date']),
     ...mapGetters('device',['serials']),
     headers:function() {
       return [
