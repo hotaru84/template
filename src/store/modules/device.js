@@ -14,8 +14,10 @@ const mutations = {
   ADD_DEVICE(state,d) {
     state.device.unshift(d)
   },
-  DELETE_DEVICE(state,serial) {
-    state.device = state.device.filter(l=>l.serial != serial)
+  DELETE_DEVICE(state,d) {
+    state.device = state.device.filter(l=>{
+      return !(l.serial == d.serial && l.date == d.date)
+    })
   }
 }
 const actions = {
@@ -26,7 +28,7 @@ const actions = {
   },
   async ADD_DEVICE({commit},device) {
     try{
-      let exists = await db.device.where({serial:device.serial}).count()
+      let exists = await db.device.where({date:device.date,serial:device.serial}).count()
       if(exists == 0){
         await db.device.add(device)
         commit('ADD_DEVICE',device)
@@ -35,12 +37,10 @@ const actions = {
       window.console.log(err)
     }
   },
-  async DELETE_DEVICE({commit},serial) {
+  async DELETE_DEVICE({commit},device) {
     try{
-      await db.device.where('serial')
-        .equals(serial)
-        .delete()
-      commit('DELETE_DEVICE',serial)
+      await db.device.where({serial:device.serial,date:device.serial}).delete()
+      commit('DELETE_DEVICE',device)
     }catch(err){
       window.console.log(err)
     }
