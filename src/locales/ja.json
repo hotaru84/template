@@ -3,7 +3,7 @@
     "home":"ホーム",
     "datatable":"データ一覧",
     "gallery": "画像一覧",
-    "devices":"デバイス一覧",
+    "devices":"機器一覧",
     "setup":"セットアップ",
     "settings":"設定",
     "about":"情報",
@@ -13,12 +13,12 @@
   },
   "home":{
     "summary":{
-      "title":"稼働端末",
-      "subtitle":"稼働中のデバイス数"
+      "title":"test",
+      "subtitle":"test"
     },
     "battery":{
-      "title":"バッテリー不足",
-      "subtitle":"残量が15%以下の端末"
+      "title":"test",
+      "subtitle":"test"
     }
   },
   "logs":{

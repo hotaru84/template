@@ -3,7 +3,7 @@ import Dexie from "dexie";
 export const db = new Dexie("template");
 
 db.version(1).stores({
-  log: "[serial+time],data",
+  log: "[time+serial],data",
   device: "[date+serial],ip,screen,battery"
 });
 

@@ -1,10 +1,12 @@
 const state = {
   serial:null,
-  date:null
+  date:null,
+  keyword:null
 }
 const getters = {
   serial: state => state.serial,
-  date: state => state.date
+  date: state => state.date,
+  keyword: state => state.keyword
 }
 const mutations = {
   SELECT_SERIAL(state, serial) {
@@ -12,6 +14,9 @@ const mutations = {
   },
   SELECT_DATE(state,date) {
     state.date = date
+  },
+  SET_KEYWORD(state,k) {
+    state.keyword = k
   }
 }
 const actions = {
@@ -20,6 +25,9 @@ const actions = {
   },
   SELECT_DATE({commit}, date) {
     commit('SELECT_DATE',date)
+  },
+  SET_KEYWORD({commit},key) {
+    commit('SET_KEYWORD',key)
   }
 }
 export default {

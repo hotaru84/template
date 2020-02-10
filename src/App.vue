@@ -24,7 +24,6 @@ export default {
   }),
   created: function() {
     this.$store.dispatch("device/FETCH_DEVICE")
-    this.$store.dispatch("log/FETCH_LOG")
   }
 };
 </script>
