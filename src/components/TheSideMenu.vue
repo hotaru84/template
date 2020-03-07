@@ -4,6 +4,7 @@
       app
       clipped
       permanent
+      width="200"
       color="grey lighten-4"
     >
       <v-list

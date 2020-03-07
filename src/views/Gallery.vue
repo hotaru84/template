@@ -4,22 +4,27 @@
     <v-btn icon @click="addImg"><v-icon>add</v-icon></v-btn>
   </v-card-actions>
   <v-container fill-height class="overflow-y-auto">
-    <v-timeline dense align-top>
-      <v-timeline-item fill-dot v-for="(hour,index) in hours" :key="index">
-        <v-row>
-          <v-col cols="6">
-            <span>{{hour}}</span>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="3" v-for="(image,index) in imagesInHour(hour)" :key="index">
-            <span>{{getDate(image.time)}}</span>
-            <v-img :src="blob2Url(image.blob)">
-            </v-img>
-          </v-col>
-        </v-row>
-      </v-timeline-item>
-    </v-timeline>
+    <v-row>
+      <v-col
+        v-for="(image,index) in imagesInADay" :key="index"
+        class="d-flex child-flex"
+        cols="2"
+      >
+        <v-card flat tile class="d-flex">
+          <v-img :src="blob2Url(image.blob)">
+            <template v-slot:placeholder>
+              <v-row
+                class="fill-height ma-0"
+                align="center"
+                justify="center"
+              >
+                <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+              </v-row>
+            </template>
+          </v-img>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </v-card>
 </template>
@@ -52,7 +57,7 @@ export default {
     },
     addImg(){
       let seed = Math.random() * 10
-      const url = 'https://picsum.photos/seed/' + seed + '/320/480'
+      const url = 'https://picsum.photos/seed/' + seed + '/1200/1080'
       axios.get(url, {responseType:'blob'})
       .then(response =>{
         const blob = new Blob([response.data],{
