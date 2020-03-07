@@ -2,8 +2,8 @@
   <v-card
     outlined
   >
-    <v-chip small outlined class="ma-2">
-      <v-icon small left color="grey">phonelink_erase</v-icon>
+    <v-chip  outlined class="ma-2">
+      <v-icon left :color="getStatusColor(device.status)">{{getStatusIcon(device.status)}}</v-icon>
       SN:#{{device.serial}}
     </v-chip>
     <v-list-item class="text-center mx-2">
@@ -30,8 +30,8 @@
             <v-progress-circular
               :rotate="-90"
               :value="item.value"
-              :size="32"
-              :width="3"
+              :size="36"
+              :width="4"
               :color="item.color"
               v-on="on"
               >
@@ -67,7 +67,17 @@ export default {
     },
     getValue(unit){
       return this.device[unit]
-    }
+    },
+    getStatusIcon(status){
+      if(status == 'charging') return 'battery_charging_full'
+      else if(status == 'active') return 'phone_android'
+      return 'phonelink_erase'
+    },
+    getStatusColor(status){
+      if(status == 'charging') return 'orange'
+      else if(status == 'active') return 'green'
+      return 'grey'
+    },
   }
 }
 </script>
