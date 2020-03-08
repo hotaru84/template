@@ -1,7 +1,5 @@
 <template>
-  <v-card
-    outlined
-  >
+  <v-card outlined>
     <v-card-actions>
       <v-chip color="white">
         <v-icon left :color="getStatusColor(device.status)">{{getStatusIcon(device.status)}}</v-icon>
@@ -74,7 +72,6 @@ export default {
       return this.device[item.title]
     },
     getPercent(item) {
-      window.console.log(item)
       return this.device[item.title]/item.max*100
     },
     getStatusIcon(status){
@@ -86,7 +83,7 @@ export default {
       if(status == 'charging') return 'orange'
       else if(status == 'active') return 'green'
       return 'grey'
-    },
+    }
   },
   computed:{
     filteredItems(){
