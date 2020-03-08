@@ -73,7 +73,7 @@ export default {
     },
     getStatusColor(status){
       if(status == 'charging') return 'orange'
-      else if(status == 'active') return 'green'
+      else if(status == 'active') return 'blue-grey'
       return 'grey'
     },
   },

@@ -11,8 +11,8 @@
         <v-tabs icons-and-text centered grow color="primary">
           <v-tab @click="changeTab('time')">最近の更新<v-icon>date_range</v-icon></v-tab>
           <v-tab @click="changeTab('active')">最もアクティブ<v-icon>touch_app</v-icon></v-tab>
-          <v-tab @click="changeTab('action')">アクション数が多い<v-icon>flare</v-icon></v-tab>
-          <v-tab @click="changeTab('step')">移動回数が多い<v-icon>directions_walk</v-icon></v-tab>
+          <v-tab @click="changeTab('action')">アクションが多い<v-icon>flare</v-icon></v-tab>
+          <v-tab @click="changeTab('step')">移動が多い<v-icon>directions_walk</v-icon></v-tab>
           <v-tab @click="changeTab('battery')">バッテリー残量低<v-icon>battery_alert</v-icon></v-tab>
         </v-tabs>
       </template>

@@ -1,7 +1,7 @@
 <template>
   <v-card outlined>
     <v-card-actions>
-      <v-chip color="white">
+      <v-chip large color="white">
         <v-icon left :color="getStatusColor(device.status)">{{getStatusIcon(device.status)}}</v-icon>
         #{{device.serial}}
       </v-chip>
@@ -28,22 +28,23 @@
         <v-list-item-title class="display-1">{{getValue(getItem(mainTitle))}}<span class="body-2 mx-2">{{getItem(mainTitle).unit}}</span></v-list-item-title>
       </v-list-item-content>
     </v-list-item>
-    <v-row class="mx-2">
-      <v-col :lg="3" :md="6" :sm="6" v-for="(item,id) in filteredItems" :key="id" class="text-center">
-        <div class="caption" :style="'color:' + item.color">{{item.title}}</div> 
-        <v-progress-circular
-          :rotate="-90"
-          :value="getPercent(item)"
-          :size="36"
-          :width="4"
-          :color="item.color"
-          >
-          <v-icon small :color="item.color">{{item.icon}}</v-icon>
-        </v-progress-circular>
-        <div class="caption">{{getValue(item)}}</div>
-      </v-col>
-    </v-row>
-  </v-card>
+      <v-row no-gutters v-for="(item,id) in filteredItems" :key="id" class="my-2 mx-3">
+        <v-col :sm="4">
+        <v-chip small color="white" text-color="#607D8B">
+          <v-icon small left color="#607D8B">{{item.icon}}</v-icon>
+          {{item.name}}
+        </v-chip>
+        </v-col>
+        <v-col :sm="8" class="pr-2 pb-2">
+          <div class="caption">{{getValue(item)+' ' +item.unit}}</div>
+          <v-progress-linear
+            :value="getPercent(item)"
+            color="#607D8B"
+          />
+        </v-col>
+        
+      </v-row>
+    </v-card>
 </template>
 <script>
 const moment = require('moment')
@@ -52,11 +53,11 @@ export default {
   data() {
     return {
       items:[
-        {name:'Active',color:'#607D8B',icon:'touch_app',max:24, title:'active',unit:'hour'},
-        {name:'Action',color:'#81c784',icon:'flare',max:3000, title:'action',unit:'logs'},
+        {name:'Active',color:'#fb8c00',icon:'touch_app',max:24, title:'active',unit:'hours'},
+        {name:'Action',color:'#e57373',icon:'flare',max:3000, title:'action',unit:'logs'},
         {name:'Image',color:'#4fc3f7',icon:'photo',max:3000, title:'image',unit:'images'},
-        {name:'Step',color:'#e57373',icon:'directions_walk',max:10000,title:'step',unit:'steps'},
-        {name:'Battery',color:'#ffa726',icon:'battery_std',max:100, title:'battery',unit:'%'}
+        {name:'Step',color:'#039be5',icon:'directions_walk',max:10000,title:'step',unit:'steps'},
+        {name:'Battery',color:'#66bb6a',icon:'battery_std',max:100, title:'battery',unit:'%'}
       ]
     }
   },
@@ -81,7 +82,7 @@ export default {
     },
     getStatusColor(status){
       if(status == 'charging') return 'orange'
-      else if(status == 'active') return 'green'
+      else if(status == 'active') return 'blue-grey'
       return 'grey'
     }
   },
