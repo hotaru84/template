@@ -7,34 +7,20 @@
     :headers="headers"
     :items="devices">
     <template v-slot:item.status="{item}">
-      <v-chip>
-      <v-icon left >
+      <v-chip small :color="getStatusColor(item.status)" text-color="white">
+      <v-icon small left >
         {{getStatusIcon(item.status)}}
       </v-icon>
       {{item.status}}
       </v-chip>
     </template>
     <template v-slot:item.battery="{item}">
-      <v-progress-circular
-        :rotate="-90"
-        :value="item.battery"
-        :size="40"
-        :width="4"
-        :color="item.battery > 30 ? 'green':'orange'"
-        >
-        <span class="caption">{{item.battery}}</span><span class="overline">%</span>
-      </v-progress-circular>
+      {{item.battery}} <span class="caption">%</span>
+      <v-progress-linear height="10" :color="item.battery > 15 ? 'blue-grey':'orange'" :value="item.battery"/>
     </template>
     <template v-slot:item.active="{item}">
-      <v-progress-circular
-        :rotate="-90"
-        :value="item.active/24*100"
-        :size="40"
-        :width="4"
-        :color="item.active > 12 ? 'green':'orange'"
-        >
-        <span class="caption">{{item.active}}</span><span class="overline">h</span>
-      </v-progress-circular>
+        {{item.action}} <span class="caption">hour</span>
+        <v-progress-linear height="10" :value="item.active/24*100"/>
     </template>
     <template v-slot:item.action="{item}">
       {{item.action}} <span class="caption">actions</span>
@@ -74,7 +60,7 @@ export default {
         ip:'192.168.1.9',
         status:Math.random() > 0.5?'charging' :'active',
         battery:(100*Math.random()).toFixed(0),
-        active:(24*Math.random()).toFixed(2),
+        active:(12*Math.random()).toFixed(2),
         action:(3000*Math.random()).toFixed(0),
         image:(3000*Math.random()).toFixed(0),
         step:(10000*Math.random()).toFixed(0),
@@ -84,6 +70,11 @@ export default {
       if(status == 'charging') return 'battery_charging_full'
       else if(status == 'active') return 'phone_android'
       return 'phonelink_erase'
+    },
+    getStatusColor(status){
+      if(status == 'charging') return 'orange'
+      else if(status == 'active') return 'green'
+      return 'grey'
     },
   },
   computed: {

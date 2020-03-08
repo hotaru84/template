@@ -2,48 +2,49 @@
   <v-card
     outlined
   >
-    <v-chip  outlined class="ma-2">
-      <v-icon left :color="getStatusColor(device.status)">{{getStatusIcon(device.status)}}</v-icon>
-      SN:#{{device.serial}}
-    </v-chip>
+    <v-card-actions>
+      <v-chip color="white">
+        <v-icon left :color="getStatusColor(device.status)">{{getStatusIcon(device.status)}}</v-icon>
+        #{{device.serial}}
+      </v-chip>
+      <v-spacer/>
+      <v-chip small color="white">
+        <v-icon small left color="grey">history</v-icon>
+        最終更新:約{{getDuration(device.time)}}時間前
+      </v-chip>
+    </v-card-actions>
     <v-list-item class="text-center mx-2">
-      <v-list-item-avatar size="50">
+      <v-list-item-avatar size="80">
         <v-progress-circular
           :rotate="-90"
           :value="device.active/24*100"
-          :size="50"
-          :width="6"
-          color="accent"
+          :size="80"
+          :width="8"
+          color="#607D8B"
           >
-          <v-icon color="accent">touch_app</v-icon>
+          <v-icon large color="#607D8B">touch_app</v-icon>
         </v-progress-circular>
       </v-list-item-avatar>
       <v-list-item-content>
-        <v-list-item-subtitle class="text-left">Total</v-list-item-subtitle>
-        <v-list-item-title class="display-1">{{device.active}}<span class="caption mx-2">hour</span></v-list-item-title>
+        <v-list-item-title class="text-left" :style="'color:' + '#607D8B'">Active</v-list-item-title>
+        <v-list-item-title class="display-1">{{device.active}}<span class="body-2 mx-2">hour/day</span></v-list-item-title>
       </v-list-item-content>
     </v-list-item>
     <v-row class="mx-2">
-      <v-col cols="3" v-for="(item,idx) in items" :key="idx" class="text-center">
-        <v-tooltip top>
-          <template v-slot:activator="{ on }">
-            <v-progress-circular
-              :rotate="-90"
-              :value="item.value"
-              :size="36"
-              :width="4"
-              :color="item.color"
-              v-on="on"
-              >
-              <v-icon small :color="item.color">{{item.icon}}</v-icon>
-            </v-progress-circular>
-            <div class="caption" v-on="on">{{getValue(item.unit)}}</div>
-          </template>
-          <div>{{item.name}}</div>
-        </v-tooltip>
+      <v-col :lg="3" :md="6" :sm="6" v-for="(item,id) in items" :key="id" class="text-center">
+        <div class="caption" :style="'color:' + item.color">{{item.unit}}</div> 
+        <v-progress-circular
+          :rotate="-90"
+          :value="getPercent(item)"
+          :size="36"
+          :width="4"
+          :color="item.color"
+          >
+          <v-icon small :color="item.color">{{item.icon}}</v-icon>
+        </v-progress-circular>
+        <div class="caption">{{getValue(item.unit)}}</div>
       </v-col>
     </v-row>
-    <div class="caption text-right ma-2">最終更新:約{{getDuration(device.time)}}時間前</div>
   </v-card>
 </template>
 <script>
@@ -53,10 +54,10 @@ export default {
   data() {
     return {
       items:[
-        {name:'Scans',color:'#81c784',icon:'flare',value:80, unit:'action'},
-        {name:'Images',color:'#4fc3f7',icon:'photo',value:35, unit:'image'},
-        {name:'Steps',color:'#e57373',icon:'directions_walk',value:20,unit:'step'},
-        {name:'Battery',color:'#ffa726',icon:'battery_std',value:80, unit:'battery'}
+        {name:'Scans',color:'#81c784',icon:'flare',maxValue:3000, unit:'action'},
+        {name:'Images',color:'#4fc3f7',icon:'photo',maxValue:3000, unit:'image'},
+        {name:'Steps',color:'#e57373',icon:'directions_walk',maxValue:10000,unit:'step'},
+        {name:'Battery',color:'#ffa726',icon:'battery_std',maxValue:100, unit:'battery'}
       ]
     }
   },
@@ -67,6 +68,9 @@ export default {
     },
     getValue(unit){
       return this.device[unit]
+    },
+    getPercent(device) {
+      return this.device[device.unit]/device.maxValue*100
     },
     getStatusIcon(status){
       if(status == 'charging') return 'battery_charging_full'
