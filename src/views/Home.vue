@@ -8,7 +8,7 @@
       hide-default-footer
     >
       <template v-slot:header>
-        <v-tabs icons-and-text centered grow color="primary">
+        <v-tabs icons-and-text centered grow :color="tabColor">
           <v-tab @click="changeTab('time')">最近の更新<v-icon>date_range</v-icon></v-tab>
           <v-tab @click="changeTab('active')">最もアクティブ<v-icon>touch_app</v-icon></v-tab>
           <v-tab @click="changeTab('action')">アクションが多い<v-icon>flare</v-icon></v-tab>
@@ -93,6 +93,9 @@ export default {
     ...mapGetters('device',['devices']),
     lowBatteryCount:function() {
       return this.devices.filter(d=>d.battery < 0.15).length
+    },
+    tabColor(){
+      return 'blue-grey'
     }
   }
 }

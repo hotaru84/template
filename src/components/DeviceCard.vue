@@ -29,13 +29,13 @@
       </v-list-item-content>
     </v-list-item>
       <v-row no-gutters v-for="(item,id) in filteredItems" :key="id" class="my-2 mx-3">
-        <v-col :sm="4">
-        <v-chip small color="white" text-color="#607D8B">
-          <v-icon small left color="#607D8B">{{item.icon}}</v-icon>
-          {{item.name}}
-        </v-chip>
+        <v-col :sm="4" class="d-flex align-center">
+          <v-chip small color="white" text-color="#607D8B">
+            <v-icon small left color="#607D8B">{{item.icon}}</v-icon>
+            {{item.name}}
+          </v-chip>
         </v-col>
-        <v-col :sm="8" class="pr-2 pb-2">
+        <v-col :sm="8" class="pb-1 pr-2">
           <div class="caption">{{getValue(item)+' ' +item.unit}}</div>
           <v-progress-linear
             :value="getPercent(item)"
