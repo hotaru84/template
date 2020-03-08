@@ -9,7 +9,7 @@
       <v-tabs icons-and-text centered grow color="primary">
         <v-tab>最近の更新<v-icon>date_range</v-icon></v-tab>
         <v-tab>最もアクティブ<v-icon>touch_app</v-icon></v-tab>
-        <v-tab>スキャン回数が多い<v-icon>flare</v-icon></v-tab>
+        <v-tab>アクション数が多い<v-icon>flare</v-icon></v-tab>
         <v-tab>移動回数が多い<v-icon>directions_walk</v-icon></v-tab>
         <v-tab>バッテリー残量低<v-icon>battery_alert</v-icon></v-tab>
         <v-tab>MORE<v-icon>tune</v-icon></v-tab>
@@ -18,7 +18,7 @@
       <template v-slot:default="props">
         <v-row>
           <v-col :md="4" :sm="6" :xs="12" v-for="(item,id) in props.items" :key="id">
-            <device-card :device="item"/>
+            <device-card :device="item" mainTitle="active"/>
           </v-col>
         </v-row>
       </template>
