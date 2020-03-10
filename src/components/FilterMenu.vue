@@ -1,8 +1,9 @@
 <template>
   <v-bottom-sheet v-model="sheet" inset>
     <template v-slot:activator="{ on }">
-      <v-btn text v-on="on" class="ma-2">
-        {{$t('app.filter')}}
+      <v-btn tile v-on="on" class="ma-2">
+        <v-icon left>date_range</v-icon>
+        {{date}}
       </v-btn>
     </template>
     <v-sheet>

@@ -3,7 +3,8 @@ import Dexie from 'dexie'
 const moment = require('moment')
 const state = {
   logInADay: [],
-  logCount:{}
+  monthlyCount:[],
+  dailyCount:[]
 }
 const getters = {
   logInADay: state => state.logInADay,
@@ -37,23 +38,6 @@ const actions = {
       }).toArray();
     commit("FETCH_DAY_LOG", logs);
   },
-  async FETCH_DATE_STATS({commit},{startDate,endDate,keyword}) {
-    let start = moment(startDate).startOf('day').valueOf()
-    let end = moment(endDate).endOf('day').valueOf()
-    let logs = await db.log.where("[time+serial]").between(
-        [start,Dexie.minKey],
-        [end,Dexie.maxKey]
-      ).and(function(l){
-        return keyword != null ? l.data.includes(keyword) : true
-      }).toArray()
-    let counts = logs.reduce((ttl,l)=>{
-      let day = moment(l.time).format('YYYY-MM-DD')
-      if(ttl[day] === undefined) ttl[day] = 1
-      else ttl[day] = ttl[day] + 1
-      return ttl
-    },{})
-    commit("FETCH_DATE_STATS",counts)
-  },
   async ADD_LOG({commit},log) {
     try{
       let count = await db.log.where({time:log.time,serial:log.serial}).count()
@@ -72,6 +56,14 @@ const actions = {
     }catch(err){
       window.console.log(err)
     }
+  },
+  async queryCount(date) {
+    let start = moment(date).startOf('day').valueOf()
+    let end = moment(date).endOf('day').valueOf()
+    return await db.log.where("[time+serial]").between(
+      [start,Dexie.minKey],
+      [end,Dexie.maxKey]
+    ).count()
   }
 }
 
