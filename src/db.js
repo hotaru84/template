@@ -1,11 +1,12 @@
 import Dexie from "dexie";
 
-export const db = new Dexie("template");
+export const db = new Dexie("device");
 
 db.version(1).stores({
+  device: "&serial,uptime,ip,status,battery",
+  stats: "[serial+date],screen,log,image,step",
   log: "[time+serial],data",
-  device: "&serial,time,ip,status,battery,active,action,image,step",
-  image:"[time+serial],name,blob",
+  gallery:"[time+serial],name,blob",
 });
 
 db.on("populate", function() {});

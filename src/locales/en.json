@@ -1,36 +1,4 @@
 {
   "app":{
-    "home":"Home",
-    "datatable":"Data Table",
-    "gallery": "Gallery",
-    "devices":"Devices",
-    "setup":"Setup",
-    "settings":"Settings",
-    "about":"About"
-  },
-  "home":{
-    "summary":{
-      "title":"Avaiable",
-      "subtitle":"Number of devices"
-    },
-    "battery":{
-      "title":"Low battery",
-      "subtitle":"Remained battery less than 15%"
-    }
-  },
-  "logs":{
-    "time":"Time",
-    "data":"Data"
-  },
-  "devices": {
-    "serial":"Serial",
-    "ip":"IP Address",
-    "battery":"Remained Battery",
-    "screen":"Screen"
-  },
-  "action":{
-    "title":"Actions",
-    "add":"Add",
-    "delete":"delete"
   }
 }

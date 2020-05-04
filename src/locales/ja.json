@@ -1,45 +1,4 @@
 {
   "app":{
-    "home":"ホーム",
-    "datatable":"データ一覧",
-    "gallery": "画像一覧",
-    "devices":"機器一覧",
-    "setup":"セットアップ",
-    "settings":"設定",
-    "about":"情報",
-    "filter":"フィルター",
-    "ok":"決定",
-    "cancel":"キャンセル"
-  },
-  "home":{
-    "summary":{
-      "title":"test",
-      "subtitle":"test"
-    },
-    "battery":{
-      "title":"test",
-      "subtitle":"test"
-    }
-  },
-  "logs":{
-    "time":"時刻",
-    "data":"データ"
-  },
-  "devices": {
-    "date":"更新日",
-    "serial":"シリアル",
-    "ip":"IPアドレス",
-    "battery":"バッテリー残量",
-    "screen":"画面"
-  },
-  "action":{
-    "title":"操作",
-    "add":"追加",
-    "delete":"削除"
-  },
-  "filter": {
-    "search":"探索",
-    "device":"デバイス",
-    "date":"年月日"
   }
 }
