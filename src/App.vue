@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <the-side-menu color="grey"/>
+    <navigation-side-bar />
     <v-content >
       <transition
         name="fade"
@@ -13,10 +13,12 @@
 </template>
 
 <script>
+import NavigationSideBar from './components/NavigationSideBar'
 
 export default {
   name: 'App',
   components: {
+    NavigationSideBar
   },
 };
 </script>
