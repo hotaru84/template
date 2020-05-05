@@ -21,6 +21,7 @@ export default new Vuetify({
       prev:'navigate_before',
       checkboxOff:'check_box_outline_blank',
       checkboxOn:'check_box',
+      checkboxIndeterminate:'indeterminate_check_box',
       dropdown:'arrow_drop_down',
       search:'search',
       menu:'menu'

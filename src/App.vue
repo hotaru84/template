@@ -20,5 +20,8 @@ export default {
   components: {
     NavigationSideBar
   },
+  methods:{
+
+  }
 };
 </script>

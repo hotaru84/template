@@ -2,6 +2,8 @@
   <v-navigation-drawer
     app
     clipped
+    permanent
+    expand-on-hover
     color="grey lighten-4"
   >
     <v-list
@@ -31,7 +33,7 @@ export default {
   data() {
     return {
       menus:[
-        { icon: 'phone_android', text: 'Home', to:'/home'},
+        { icon: 'phone_android', text: 'Home', to:'/'},
         { icon: 'playlist_add_check', text: 'Data',to:'/data'},
         { icon: 'photo_library', text: 'Gallery', to:'/gallery'}
       ]
